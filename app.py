@@ -38,6 +38,12 @@ def main():
         bg_image_file = st.file_uploader("Choose a background image...", type=["jpg", "png", "jpeg"])
         col1, col2 = st.columns(2)
         
+        # Clear previous results when a new image is uploaded
+        if 'uploaded_image' not in st.session_state or st.session_state.uploaded_image != uploaded_file:
+            st.session_state.uploaded_image = uploaded_file
+            st.session_state.output = None
+            st.session_state.output_with_bg = None
+
         if 'output' not in st.session_state:
             st.session_state.output = None
         if 'output_with_bg' not in st.session_state:
@@ -57,9 +63,9 @@ def main():
                 st.session_state.byte_im = buf.getvalue()
                 
                 st.download_button(
-                    label="Download Transparent Image",
+                    label="Download image without background",
                     data=st.session_state.byte_im,
-                    file_name="transparent_image.png",
+                    file_name="output.png",
                     mime="image/png"
                 )
         
