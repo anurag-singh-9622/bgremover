@@ -66,7 +66,7 @@ def main():
                 st.download_button(
                     label="Download image without background",
                     data=st.session_state.byte_im,
-                    file_name="output.png",
+                    file_name="image_without_bg.png",
                     mime="image/png"
                 )
         
@@ -88,7 +88,7 @@ def main():
                 st.download_button(
                     label="Download Image with Background",
                     data=st.session_state.byte_im_with_bg,
-                    file_name="image_with_background.png",
+                    file_name="image_with_bg.png",
                     mime="image/png"
                 )
 
