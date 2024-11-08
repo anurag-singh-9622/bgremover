@@ -18,13 +18,14 @@ def add_bg_image(foreground, background):
     combined = Image.alpha_composite(background.convert('RGBA'), foreground.convert('RGBA'))
     return combined
 
-def fetch_readme(repo_url):
-    readme_url = f"{repo_url}/raw/main/README.md"
-    response = requests.get(readme_url)
-    if response.status_code == 200:
-        return response.text
-    else:
-        return "README not found."
+def fetch_readme():
+    try:
+        with open('README.md', 'r') as file:
+            return file.read()
+    except FileNotFoundError:
+        return "README.md file not found."
+    except Exception as e:
+        return f"An error occurred: {e}"
 
 def main():
     st.title("Background Removal and Replacement App")
@@ -92,8 +93,7 @@ def main():
                 )
 
     st.sidebar.title("About")
-    repo_url = "https://github.com/anurag-singh-9622/bgremover"  # Replace with your actual repo URL
-    readme_content = fetch_readme(repo_url)
+    readme_content = fetch_readme()
     st.sidebar.markdown(readme_content)
 
 if __name__ == "__main__":
