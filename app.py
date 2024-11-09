@@ -5,7 +5,7 @@ from background_removal import remove_bg, add_bg_color, add_bg_image
 from utils import fetch_readme
 
 def main():
-    st.title("Background Removal and Replacement App")
+    st.title("Background Editor App")
 
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
     if uploaded_file is not None:
