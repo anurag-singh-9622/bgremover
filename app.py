@@ -1,31 +1,8 @@
 import streamlit as st
-from PIL import Image, ImageOps
-from rembg import remove
+from PIL import Image
 import io
-import requests
-
-def remove_bg(image):
-    output = remove(image , alpha_matting=True)
-    return output
-
-def add_bg_color(foreground, color):
-    background = Image.new('RGBA', foreground.size, color)
-    combined = Image.alpha_composite(background, foreground)
-    return combined
-
-def add_bg_image(foreground, background):
-    background = background.resize(foreground.size)
-    combined = Image.alpha_composite(background.convert('RGBA'), foreground.convert('RGBA'))
-    return combined
-
-def fetch_readme():
-    try:
-        with open('README.md', 'r') as file:
-            return file.read()
-    except FileNotFoundError:
-        return "README.md file not found."
-    except Exception as e:
-        return f"An error occurred: {e}"
+from background_removal import remove_bg, add_bg_color, add_bg_image
+from utils import fetch_readme
 
 def main():
     st.title("Background Removal and Replacement App")
@@ -36,6 +13,7 @@ def main():
         st.image(image, caption='Uploaded Image.', use_column_width=True)
 
         bg_color = st.color_picker('Pick A Background Color', '#ffffff')
+        st.info('Or you can upload your own background image')
         bg_image_file = st.file_uploader("Choose a background image...", type=["jpg", "png", "jpeg"])
         col1, col2 = st.columns(2)
         
