@@ -34,7 +34,7 @@ def main():
                 st.session_state.output = remove_bg(image)
                 
             if st.session_state.output is not None:
-                st.write("Right Click and Save Image on PC/ Long press and save image on mobile")
+                st.info("You can Right Click and Save Image on PC/ Long press and save image on mobile or download using the button below")
                 st.image(st.session_state.output, caption='Output Image.', use_column_width=True)
                 
                 buf = io.BytesIO()
@@ -56,7 +56,7 @@ def main():
                 else:
                     st.session_state.output_with_bg = add_bg_color(st.session_state.output, bg_color)
                 
-                st.write("Right Click and Save Image on PC/ Long press and save image on mobile")
+                st.info("You can Right Click and Save Image on PC/ Long press and save image on mobile or download using the button below")
                 st.image(st.session_state.output_with_bg, caption='Output Image with Background.', use_column_width=True)
                 
                 buf = io.BytesIO()
