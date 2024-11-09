@@ -7,6 +7,7 @@ This application provides functionality to remove the background from an image a
 - **Remove Background**: Remove the background from an image using the `remove_bg` function.
 - **Add Background Color**: Replace the background of an image with a solid color using the `add_bg_color` function.
 - **Add Background Image**: Replace the background of an image with another image using the `add_bg_image` function.
+- **Download Images**: Download the processed images directly from the app.
 
 ## Requirements
 
