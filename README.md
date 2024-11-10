@@ -20,7 +20,7 @@ This application provides functionality to remove the background from an image a
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/your-repo.git
+    git clone [https://github.com/yourusername/your-repo.git](https://github.com/anurag-singh-9622/bgremover)
     cd your-repo
     ```
 
